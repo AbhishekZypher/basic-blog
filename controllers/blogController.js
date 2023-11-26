@@ -8,7 +8,7 @@ const blog_index = (req, res) => {
             res.render('index', { title: 'All Blogs', blogs: result })
         })
         .catch((error) => {
-            console.log(error)
+            res.render('404', { title: 'Blog not found' });
         })
 };
 
@@ -18,10 +18,9 @@ const blog_details = (req, res) => {
     Blog.findById(id)
         .then((result) => {
             res.render('details', { blog: result, title: 'Blog details' });
-            console.log(result, id)
         })
         .catch((error) => {
-            console.log(error);
+            res.render('404', { title: 'Blog not found' });
         })
 }
 
@@ -36,7 +35,7 @@ const blog_create_post = (req, res) => {
             res.redirect('/blogs')
         })
         .catch((error) => {
-            console.log(error);
+            res.render('404', { title: 'Blog not found' });
         })
 }
 
@@ -48,7 +47,7 @@ const blog_delete = (req, res) => {
             res.json({ redirect: '/blogs' })
         })
         .catch((error) => {
-            console.log(error)
+            res.render('404', { title: 'Blog not found' });
         })
 }
 
